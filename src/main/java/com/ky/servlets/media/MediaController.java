@@ -1,5 +1,6 @@
 package com.ky.servlets.media;
 
+import com.ky.utils.MediaFile;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -10,6 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,6 +19,9 @@ import java.util.List;
 public class MediaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path=getServletContext().getRealPath("/uploads");
+        ArrayList<String> files = MediaFile.getFiles(path);
+        request.setAttribute("files",files);
         request.getRequestDispatcher("upload.jsp").forward(request,response);
     }
 
@@ -48,6 +53,7 @@ public class MediaController extends HttpServlet {
                        // processFormField(item);
                     } else {
                         processUploadedFile(item);
+                        response.sendRedirect("media");
                     }
                 }
             } catch (FileUploadException e) {
@@ -56,6 +62,7 @@ public class MediaController extends HttpServlet {
         }else{
             System.out.println("No file were upload");
         }
+
     }
 
     private void processUploadedFile(FileItem item) {
