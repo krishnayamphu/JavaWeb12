@@ -53,7 +53,7 @@ public class MediaController extends HttpServlet {
                        // processFormField(item);
                     } else {
                         processUploadedFile(item);
-                        response.sendRedirect("media");
+
                     }
                 }
             } catch (FileUploadException e) {
@@ -62,17 +62,21 @@ public class MediaController extends HttpServlet {
         }else{
             System.out.println("No file were upload");
         }
-
+        response.sendRedirect("media");
     }
 
     private void processUploadedFile(FileItem item) {
         String fileName = item.getName();
-        String path=getServletContext().getRealPath("/uploads/"+fileName);
-        File uploadedFile = new File(path);
+        String path=getServletContext().getRealPath("/uploads");
+        File file=new File(path);
+        if(!file.exists()){
+            file.mkdirs();
+        }
+        File uploadedFile = new File(path+"/"+fileName);
         try {
             item.write(uploadedFile);
             System.out.println("file uploaded: "+fileName);
-            System.out.println(getServletContext().getRealPath("/uploads/")+fileName);
+            System.out.println(path+"/"+fileName);
         } catch (Exception e) {
             e.printStackTrace();
         }
