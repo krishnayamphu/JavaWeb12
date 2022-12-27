@@ -1,5 +1,8 @@
 package com.ky.jdbc;
 
+import com.ky.dao.UserDAO;
+import com.ky.models.User;
+
 import java.sql.*;
 
 public class JdbcTest {
@@ -63,6 +66,8 @@ public class JdbcTest {
     public static void main(String[] args) {
 
         JdbcTest obj=new JdbcTest();
-        obj.updateData();
+
+        UserDAO.create(new User("user","u123"));
+
     }
 }
