@@ -1,0 +1,78 @@
+*{
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    background-color: teal;
+    text-align: center;
+}
+nav a{
+    padding: 8px 15px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+}
+nav a:hover{
+    background-color: aquamarine;
+    color: teal;
+    transition: all 0.3s ease;
+}
+form{
+    width: 50%;
+    margin: 50px auto;
+    padding: 15px;
+}
+form label{
+    display: block;
+    margin-bottom: 5px;
+}
+form input{
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+}
+form button{
+    padding: 5px 15px;
+}
+
+table{
+    width: 60%;
+    margin: 50px auto;
+    border-collapse: collapse;
+}
+table th, table td{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+table form{
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+.form-action{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.form-action a{
+    border: 1px solid #767676;
+    padding: 5px 30px;
+    margin-right: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    background-color: #dcf3ff;
+    border-radius: 2px;
+}
+.form-action button{
+    background-color: #ffc5c5;
+    border: 1px solid #767676;
+    padding: 5px 21px;
+    font-size: 14px;
+    color: black;
+    border-radius: 2px;
+}
